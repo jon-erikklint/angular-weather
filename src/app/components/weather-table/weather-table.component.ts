@@ -11,7 +11,7 @@ import { CountryService } from 'src/app/services/country.service';
 })
 export class WeatherTableComponent {
   displayedColumns: string[] = ["country", "capital", "region", "weather"];
-  countryWeatherInfos$: Observable<CountryWeatherInfo[]>;
+  countryWeatherInfos$: Observable<CountryWeatherInfo[] | null>;
 
   constructor(countryService: CountryService) {
     this.countryWeatherInfos$ = countryService.countryWeatherDataSubject;

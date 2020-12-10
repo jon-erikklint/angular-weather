@@ -1,14 +1,17 @@
 <mat-card>
   <mat-card-title>Weather in countries</mat-card-title>
   <mat-card-content>
+    <!--loader-->
     <div class="loader" *ngIf="(countryWeatherInfos$ | async) === null">
       <mat-spinner></mat-spinner>
     </div>
     
+    <!--no content-->
     <div class="no-found" *ngIf="(countryWeatherInfos$ | async)?.length === 0">
       No countries found
     </div>
 
+    <!--country weather table-->
     <table *ngIf="(countryWeatherInfos$ | async)?.length" mat-table [dataSource]="countryWeatherInfos$ | async">
       <ng-container matColumnDef="country">
         <th mat-header-cell *matHeaderCellDef>Country</th>
@@ -37,5 +40,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
   </mat-card-content>
 </mat-card>

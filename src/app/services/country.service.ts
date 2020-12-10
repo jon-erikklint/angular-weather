@@ -10,10 +10,11 @@ import { CountryWeatherInfo } from '../models/country-weather-info';
 export class CountryService {
   private countryApi: string = "https://restcountries.eu/rest/v2/"
   private maxCountries: number = 20;
-
-  public countryWeatherDataSubject: BehaviorSubject<CountryWeatherInfo[]> = new BehaviorSubject([]);
-
   private currentDataSubscription: Subscription = undefined;
+
+  // subscribe for weather data according to current filtering
+  // null means that the data is currently loading
+  public countryWeatherDataSubject: BehaviorSubject<CountryWeatherInfo[] | null> = new BehaviorSubject([]);
 
   constructor(private http: HttpClient, private weatherService: WeatherService) {}
 
@@ -44,6 +45,7 @@ export class CountryService {
       this.currentDataSubscription = undefined;
     }
 
+    // helper functions
     const filterCountriesWithoutCapital = countries => countries.filter(country => country.capital && country.capital !== "");
     const filterExcessCountries = countries => countries.length > this.maxCountries ? countries.slice(0, this.maxCountries) : countries
     const joinWithWeatherInfo = (countries: any[]) => {
@@ -57,6 +59,7 @@ export class CountryService {
       ));
     }
 
+    // start loading
     this.countryWeatherDataSubject.next(null);
 
     this.currentDataSubscription = this.getBySearchString(searchString)
