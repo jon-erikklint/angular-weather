@@ -11,5 +11,6 @@ The app fetches countries from restcoutnries-api (https://restcountries.eu/) and
 `export const weatherstack = {
   weatherstackAccessKey: "YOUR_API_KEY_STRING_HERE"
 };`
+
 2. npm install
 3. ng serve --open
