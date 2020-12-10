@@ -6,8 +6,10 @@ The app fetches countries from restcoutnries-api (https://restcountries.eu/) and
 
 # How to run
 
-In order to run the application locally, you have to add weatherstack.environment.ts-file into /src/environments/ folder. The contents of the file should be the following:
+1. In order to run the application locally, you have to add weatherstack.environment.ts ng -file into /src/environments/ folder. The contents of the file should be the following:
 
 `export const weatherstack = {
   weatherstackAccessKey: "YOUR_API_KEY_STRING_HERE"
 };`
+2. npm install
+3. ng serve --open
