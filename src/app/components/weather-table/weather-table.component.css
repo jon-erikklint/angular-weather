@@ -1,0 +1,51 @@
+:host table {
+  width: 100%;
+}
+
+:host .loader {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+  background-color: #fbfbfb;
+  border-radius: 5px;
+}
+
+:host .no-found {
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
+  font-size: 2em;
+}
+
+:host .weather-info-holder {
+  display: flex;
+  justify-content: center;
+}
+
+:host .weather-info {
+  background-color: #f2f2f2;
+  padding: 5px;
+  box-sizing: border-box;
+  width: 80px;
+}
+
+:host .weather {
+  width: 100px;
+  text-align: center;
+}
+
+:host .temperature {
+  display: inline-block;
+  width: 35px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+:host .weather-image-holder {
+  vertical-align: middle;
+}
+
+:host .weather-image {
+  height: 20px;
+  vertical-align: middle;
+}

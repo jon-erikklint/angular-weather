@@ -1,0 +1,41 @@
+<mat-card>
+  <mat-card-title>Weather in countries</mat-card-title>
+  <mat-card-content>
+    <div class="loader" *ngIf="(countryWeatherInfos$ | async) === null">
+      <mat-spinner></mat-spinner>
+    </div>
+    
+    <div class="no-found" *ngIf="(countryWeatherInfos$ | async)?.length === 0">
+      No countries found
+    </div>
+
+    <table *ngIf="(countryWeatherInfos$ | async)?.length" mat-table [dataSource]="countryWeatherInfos$ | async">
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef>Country</th>
+        <td mat-cell *matCellDef="let info">{{info.countryName}}</td>
+      </ng-container>
+      <ng-container matColumnDef="capital">
+        <th mat-header-cell *matHeaderCellDef>Capital</th>
+        <td mat-cell *matCellDef="let info">{{info.capital}}</td>
+      </ng-container>
+      <ng-container matColumnDef="region">
+        <th mat-header-cell *matHeaderCellDef>Region</th>
+        <td mat-cell *matCellDef="let info">{{info.region}}</td>
+      </ng-container>
+      <ng-container matColumnDef="weather">
+        <th mat-header-cell *matHeaderCellDef class="weather">Weather</th>
+        <td mat-cell *matCellDef="let info" class="weather">
+          <div class="weather-info-holder">
+            <div class="weather-info">
+              <span class="temperature">{{info.temperature | temperature}}</span>
+              <span class="weather-image-holder"><img class="weather-image" [src]="info.weatherIcon"/></span>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

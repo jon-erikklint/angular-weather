@@ -1,0 +1,7 @@
+:host mat-card{
+  margin-bottom: 10px;
+}
+
+:host .search-icon {
+  margin-right: 10px;
+}
